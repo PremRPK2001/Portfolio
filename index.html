@@ -383,6 +383,58 @@
             transform: translateY(-2px);
         }
 
+        .btn-resume {
+            background: linear-gradient(135deg, var(--accent-orange), #ff8c5a);
+            color: white;
+            border: 2px solid var(--accent-orange);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(255, 107, 53, 0.3);
+            animation: resumePulse 3s ease-in-out infinite;
+        }
+
+        .btn-resume::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn-resume:hover::before {
+            left: 100%;
+        }
+
+        .btn-resume:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.5), 0 0 30px rgba(255, 107, 53, 0.4);
+        }
+
+        .btn-resume svg {
+            transition: transform 0.3s ease;
+        }
+
+        .btn-resume:hover svg {
+            transform: translateY(3px);
+            animation: downloadBounce 0.6s ease infinite;
+        }
+
+        @keyframes resumePulse {
+            0%, 100% { box-shadow: 0 0 20px rgba(255, 107, 53, 0.3); }
+            50% { box-shadow: 0 0 30px rgba(255, 107, 53, 0.5); }
+        }
+
+        @keyframes downloadBounce {
+            0%, 100% { transform: translateY(3px); }
+            50% { transform: translateY(6px); }
+        }
+
         /* Section Styles */
         section {
             padding: 6rem 0;
@@ -593,6 +645,80 @@
             left: 0;
             color: var(--blueprint-blue);
             font-weight: bold;
+        }
+
+        /* Project Links Hover Effects */
+        .project-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: linear-gradient(135deg, rgba(0, 180, 216, 0.15), rgba(0, 180, 216, 0.25));
+            border: 2px solid var(--blueprint-blue);
+            color: var(--blueprint-blue);
+            text-decoration: none;
+            border-radius: 8px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0, 180, 216, 0.2);
+        }
+
+        .project-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .project-link:hover::before {
+            left: 100%;
+        }
+
+        .project-link:hover {
+            background: linear-gradient(135deg, rgba(0, 180, 216, 0.3), rgba(0, 180, 216, 0.4));
+            border-color: var(--blueprint-light);
+            color: var(--blueprint-light);
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 25px rgba(0, 180, 216, 0.5), 0 0 30px rgba(0, 180, 216, 0.3);
+        }
+
+        .project-link svg {
+            transition: transform 0.3s ease;
+        }
+
+        .project-link:hover svg {
+            transform: translateX(5px);
+            animation: arrowBounce 0.6s ease infinite;
+        }
+
+        @keyframes arrowBounce {
+            0%, 100% { transform: translateX(5px); }
+            50% { transform: translateX(8px); }
+        }
+
+        /* Pulsing glow effect for project links */
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 20px rgba(0, 180, 216, 0.2); }
+            50% { box-shadow: 0 0 30px rgba(0, 180, 216, 0.4); }
+        }
+
+        .project-link {
+            animation: pulseGlow 3s ease-in-out infinite;
         }
 
         /* Skills Section */
@@ -905,6 +1031,14 @@
                     <div class="cta-buttons">
                         <a href="#projects" class="btn btn-primary">View My Work</a>
                         <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+                        <a href="Premkumar_Ramesh.pdf" download="Premkumar_Ramesh_Resume.pdf" class="btn btn-resume">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px;">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="7 10 12 15 17 10"></polyline>
+                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                            </svg>
+                            Download Resume
+                        </a>
                     </div>
                 </div>
                 <div class="hero-image-container">
@@ -998,6 +1132,20 @@
                             <li>Reduced manual drafting effort by approximately 90%</li>
                             <li>Improved drawing consistency and reduced human errors</li>
                         </ul>
+                        <div class="project-links">
+                            <a href="https://github.com/PremRPK2001/Bar-Grate/blob/main/BAR%20grating%20macro" target="_blank" class="project-link">
+                                <span>🔗 Bar Grating Macro - View Code</span>
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M7 7l8 0m0 0l-4 4m4-4l-4-4"></path>
+                                </svg>
+                            </a>
+                            <a href="https://github.com/PremRPK2001/Premkumar" target="_blank" class="project-link">
+                                <span>🔗 Mesh Grating Macro - View Code</span>
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M7 7l8 0m0 0l-4 4m4-4l-4-4"></path>
+                                </svg>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
@@ -1025,6 +1173,14 @@
                             <li>Streamlined engineering documentation and BOM generation</li>
                             <li>Enhanced design review readiness and manufacturing release processes</li>
                         </ul>
+                        <div class="project-links">
+                            <a href="https://github.com/PremRPK2001/SolidWorks-Macro/blob/main/Ventilation%20shaft%20macro.swp" target="_blank" class="project-link">
+                                <span>🔗 Assembly Modifier Macro - View Code</span>
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M7 7l8 0m0 0l-4 4m4-4l-4-4"></path>
+                                </svg>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
@@ -1052,6 +1208,14 @@
                             <li>Improved reporting consistency and accuracy</li>
                             <li>Enhanced project visibility and decision-making speed</li>
                         </ul>
+                        <div class="project-links">
+                            <a href="https://github.com/PremRPK2001/Excel-Macro/blob/main/Optimized%20internal.txt" target="_blank" class="project-link">
+                                <span>🔗 Excel VBA Macro - View Code</span>
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M7 7l8 0m0 0l-4 4m4-4l-4-4"></path>
+                                </svg>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1133,7 +1297,7 @@
                 <div class="contact-card scroll-reveal">
                     <div class="contact-icon">📧</div>
                     <h3>Email</h3>
-                    <a href="mailto:premramesh2001@gmail.com">premramesh2001@gmail.com</a>
+                    <a href="/cdn-cgi/l/email-protection#443436212936252921372c76747475042329252d286a272b29"><span class="__cf_email__" data-cfemail="7d0d0f18100f1c10180e154f4d4d4c3d1a101c1411531e1210">[email&#160;protected]</span></a>
                 </div>
 
                 <div class="contact-card scroll-reveal">
@@ -1164,7 +1328,7 @@
         </div>
     </footer>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // Mobile menu toggle
         const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
         const navLinks = document.querySelector('.nav-links');
@@ -1315,15 +1479,16 @@
                         // Reset to 0 before animating
                         numberElement.textContent = '0' + (numberElement.getAttribute('data-suffix') || '');
                         animateNumber(numberElement);
-                    }
+                            }
                 }
             });
-        }, { threshold: 0.5 });
-
-        document.querySelectorAll('.achievement-card').forEach((card) => {
-            numberObserver.observe(card);
+        }, {
+            threshold: 0.1
         });
 
+        document.querySelectorAll('.achievement-metric').forEach((metric) => {
+            numberObserver.observe(metric);
+        });
     </script>
 </body>
 </html>
